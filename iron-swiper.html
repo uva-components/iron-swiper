@@ -114,7 +114,7 @@ Polymer 1.0 element that wraps around Swiper.js
       }
     </style>
 
-    <div id="slides" hidden>
+    <div id="slides" hidden on-dom-change="attached">
       <content></content>
     </div>
 
@@ -137,7 +137,6 @@ Polymer 1.0 element that wraps around Swiper.js
       is: 'iron-swiper',
 
       listeners: {
-        'dom-change': 'attached',
         'track': 'preventTrack'
       },
 
@@ -293,56 +292,60 @@ Polymer 1.0 element that wraps around Swiper.js
       },
 
       attached: function () {
-        clearTimeout(this._initializer);
+        this.debounce('attachbounce', function(){
+          console.log('attached');
+          clearTimeout(this._initializer);
 
-        this._initializer = setTimeout(function () {
-          // First clone real nodes into the wrapper
-          var nodes = [];
-          var slides = this.getEffectiveChildren()
-            .filter(function (node) {
-              return node.tagName &&
-                node.tagName !== 'TEMPLATE' &&
-                !node.classList.contains('swiper-slide');
-            });
+          this._initializer = setTimeout(function () {
+            // First clone real nodes into the wrapper
+            var nodes = [];
+            var slides = this.getEffectiveChildren()
+              .filter(function (node) {
+                return node.tagName &&
+                  node.tagName !== 'TEMPLATE' &&
+                  !node.classList.contains('swiper-slide');
+              });
 
-          var wrapper = this.$.wrapper;
+            var wrapper = this.$.wrapper;
 
-          wrapper.innerHTML = '';
-          wrapper.removeAttribute('style');
+            wrapper.innerHTML = '';
+            wrapper.removeAttribute('style');
 
-          for (var i = 0; i < slides.length; i++) {
-            // Otherwise IE controls don't work
-            if ('ActiveXObject' in window && /video|audio/i.test(slides[i].tagName.toLowerCase())) {
-              slides[i].classList.add('swiper-no-swiping');
+            for (var i = 0; i < slides.length; i++) {
+              // Otherwise IE controls don't work
+              if ('ActiveXObject' in window && /video|audio/i.test(slides[i].tagName.toLowerCase())) {
+                slides[i].classList.add('swiper-no-swiping');
+              }
+
+              var node = wrapper.appendChild(slides[i].cloneNode(true));
+              node.classList.add('swiper-slide');
+              node.removeEventListener('click', this.view);
+              node.addEventListener('click', this.view);
+
+              var url = node.style.backgroundImage;
+              if (url) {
+                url = url.replace(/^url\(['"]?([^'"\)]*).*?$/, '$1');
+                var img = new window.Image();
+
+                img.addEventListener('error', function () {
+                  this.fire('error', {}, { bubbles: false });
+                }.bind(this));
+
+                img.src = url;
+              }
+
+              nodes.push(node);
             }
 
-            var node = wrapper.appendChild(slides[i].cloneNode(true));
-            node.classList.add('swiper-slide');
-            node.removeEventListener('click', this.view);
-            node.addEventListener('click', this.view);
-
-            var url = node.style.backgroundImage;
-            if (url) {
-              url = url.replace(/^url\(['"]?([^'"\)]*).*?$/, '$1');
-              var img = new window.Image();
-
-              img.addEventListener('error', function () {
-                this.fire('error', {}, { bubbles: false });
-              }.bind(this));
-
-              img.src = url;
-            }
-
-            nodes.push(node);
-          }
-
-          // Then create the Swiper instance
-          this.set('nodes', nodes);
-          this.render();
-        }.bind(this), 10);
+            // Then create the Swiper instance
+            this.set('nodes', nodes);
+            this.render();
+          }.bind(this), 10);
+        },50);
       },
 
       render: function () {
+        console.log('render');
         // TODO: figure out a nicer way for this crap...
         if (!this.$.wrapper.clientHeight) {
           return setTimeout(this.render.bind(this), 50);
