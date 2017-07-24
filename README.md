@@ -1,15 +1,15 @@
-`<iron-swiper>` is a Polymer 1.0 element that wraps around Swiper.js
+`<uva-swiper>` is a Polymer 1.0 element that wraps around Swiper.js
 
 ## Demo
 
-[https://safetychanger.github.io/iron-swiper/](https://safetychanger.github.io/iron-swiper/)
+[https://safetychanger.github.io/uva-swiper/](https://safetychanger.github.io/uva-swiper/)
 
 ## Install
 
 Install the component using [Bower](http://bower.io/):
 
 ```sh
-$ bower install iron-swiper --save
+$ bower install uva-swiper --save
 ```
 
 ## Usage
@@ -17,20 +17,20 @@ $ bower install iron-swiper --save
 Import Custom Element:
 
 ```html
-<link rel="import" href="bower_components/iron-swiper/iron-swiper.html">
+<link rel="import" href="bower_components/uva-swiper/uva-swiper.html">
 ```
 
 And then use it:
 
 ```html
-<iron-swiper>
+<uva-swiper>
   <img src="sample1.jpg">
   <img src="sample2.jpg">
   <img src="sample3.jpg">
-</iron-swiper>
+</uva-swiper>
 ```
 
-See the [Documentation](https://safetychanger.github.io/iron-swiper/) for more options.
+See the [Documentation](https://safetychanger.github.io/uva-swiper/) for more options.
 
 ## Discussing
 
@@ -48,4 +48,4 @@ If you have any questions, you can find me on the [Polymer Slack Channel](https:
 
 [MIT License](http://opensource.org/licenses/MIT) © Ruben Stolk
 
-[![Throughput Graph](https://graphs.waffle.io/safetychanger/iron-swiper/throughput.svg)](https://waffle.io/safetychanger/iron-swiper/metrics)
+[![Throughput Graph](https://graphs.waffle.io/safetychanger/uva-swiper/throughput.svg)](https://waffle.io/safetychanger/uva-swiper/metrics)

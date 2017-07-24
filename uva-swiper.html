@@ -4,13 +4,13 @@
 <link rel="import" href="icons.html">
 
 <!--
-`iron-swiper`
+`uva-swiper`
 Polymer 1.0 element that wraps around Swiper.js
 
 @demo demo/index.html
 -->
 
-<dom-module id="iron-swiper">
+<dom-module id="uva-swiper">
   <link rel="import" type="css" href="../swiper/dist/css/swiper.min.css">
 
   <template>
@@ -27,18 +27,18 @@ Polymer 1.0 element that wraps around Swiper.js
         width: 100%;
         height: 100%;
         margin: 0 auto;
-        @apply(--iron-swiper-container);
+        @apply(--uva-swiper-container);
       }
       .swiper-wrapper {
         height: calc(100% - 25px);
-        @apply(--iron-swiper-wrapper);
+        @apply(--uva-swiper-wrapper);
       }
       .swiper-slide {
         background-color: #eeeeee;
         background-position: center center;
         background-size: contain;
         background-repeat: no-repeat;
-        @apply(--iron-swiper-slide);
+        @apply(--uva-swiper-slide);
       }
       .swiper-slide .caption {
         display: inline-block;
@@ -48,7 +48,7 @@ Polymer 1.0 element that wraps around Swiper.js
         top: 8px;
         font-size: 80%;
         font-weight: bold;
-        @apply(--iron-swiper-caption);
+        @apply(--uva-swiper-caption);
       }
 
       .swiper-button-prev,
@@ -70,11 +70,11 @@ Polymer 1.0 element that wraps around Swiper.js
 
       .swiper-button-prev,
       .swiper-container-rtl .swiper-button-next {
-        @apply(--iron-swiper-button-prev);
+        @apply(--uva-swiper-button-prev);
       }
       .swiper-button-next,
       .swiper-container-rtl .swiper-button-prev {
-        @apply(--iron-swiper-button-next);
+        @apply(--uva-swiper-button-next);
       }
 
       .swiper-pagination-fraction,
@@ -90,23 +90,23 @@ Polymer 1.0 element that wraps around Swiper.js
       }
 
       .swiper-pagination {
-        @apply(--iron-swiper-pagination);
+        @apply(--uva-swiper-pagination);
       }
 
       .swiper-scrollbar {
-        @apply(--iron-swiper-scrollbar);
+        @apply(--uva-swiper-scrollbar);
       }
 
       .swiper-button-prev,
       .swiper-container-rtl .swiper-button-next,
       .swiper-button-next,
       .swiper-container-rtl .swiper-button-prev {
-        color: var(--iron-swiper-active-color, --secondary-color);
+        color: var(--uva-swiper-active-color, --secondary-color);
       }
 
       .swiper-pagination-bullet-active, .swiper-pagination-progress .swiper-pagination-progressbar
       .swiper-pagination-bullet-active, .swiper-pagination-progress .swiper-pagination-progressbar {
-        background: var(--iron-swiper-active-color, --secondary-color);
+        background: var(--uva-swiper-active-color, --secondary-color);
       }
 
       .swiper-button-disabled {
@@ -124,8 +124,8 @@ Polymer 1.0 element that wraps around Swiper.js
 
       <div class="swiper-wrapper" id="wrapper"></div>
 
-      <iron-icon icon="iron-swiper:arrow-back" class="swiper-button-prev" id="prev" hidden="[[!nav(navigationButtons, nodes)]]"></iron-icon>
-      <iron-icon icon="iron-swiper:arrow-forward" class="swiper-button-next" id="next" hidden="[[!nav(navigationButtons, nodes)]]"></iron-icon>
+      <iron-icon icon="uva-swiper:arrow-back" class="swiper-button-prev" id="prev" hidden="[[!nav(navigationButtons, nodes)]]"></iron-icon>
+      <iron-icon icon="uva-swiper:arrow-forward" class="swiper-button-next" id="next" hidden="[[!nav(navigationButtons, nodes)]]"></iron-icon>
 
       <div class="swiper-scrollbar" id="scrollbar" hidden="[[!scrollbar]]"></div>
 
@@ -134,7 +134,7 @@ Polymer 1.0 element that wraps around Swiper.js
 
   <script>
     Polymer({
-      is: 'iron-swiper',
+      is: 'uva-swiper',
 
       listeners: {
         'track': 'preventTrack'

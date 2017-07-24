@@ -1,7 +1,7 @@
 {
-  "name": "iron-swiper",
+  "name": "uva-swiper",
   "description": "Polymer 1.0 element that wraps around Swiper.js",
-  "main": "iron-swiper.html",
+  "main": "uva-swiper.html",
   "keywords": [
     "web-component",
     "web-components",
