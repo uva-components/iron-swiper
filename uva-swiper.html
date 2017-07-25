@@ -155,6 +155,16 @@ Polymer 1.0 element that wraps around Swiper.js
         },
 
         /**
+         * Gets or sets the selected slide by index
+         */
+        selected: {
+          type: String,
+          value: 0,
+          notify: true,
+          observer: "setSelected"
+        },
+
+        /**
          * Direction can be one of 'horizontal' or 'vertical'
          */
         direction: {
@@ -169,6 +179,25 @@ Polymer 1.0 element that wraps around Swiper.js
         spaceBetween: {
           type: Number,
           value: 0,
+          observer: "_setOptions"
+        },
+
+        /**
+         * Number of slides per view (slides visible at the same time on slider's container).
+         * 'auto' or number
+         */
+        slidesPerView: {
+          type: String,
+          value: '1',
+          observer: "_setOptions"
+        },
+
+        /**
+         * If true, then active slide will be centered, not always on the left side.
+         */
+        centeredSlides: {
+          type: Boolean,
+          value: false,
           observer: "_setOptions"
         },
 
@@ -229,14 +258,6 @@ Polymer 1.0 element that wraps around Swiper.js
         },
 
         /**
-         * Number of slides per view (slides visible at the same time on slider's container).
-         */
-        slidesPerView: {
-          type: String,
-          value: '1'
-        },
-
-        /**
          * Enable keyboard control
          */
         keyboardControl: {
@@ -257,8 +278,12 @@ Polymer 1.0 element that wraps around Swiper.js
       _setOptions: function(){
         this.debounce('optionsbounce', function(){
           console.log("setoptions");
-          this.set('options.direction', this.direction);
-          this.set('options.spaceBetween', this.spaceBetween);
+          this.set('options', {
+              direction:this.direction,
+              spaceBetween:this.spaceBetween,
+              slidesPerView:this.slidesPerView,
+              centeredSlides:this.centeredSlides,
+            });
         },50);
       },
 
@@ -375,6 +400,11 @@ Polymer 1.0 element that wraps around Swiper.js
         },50);
       },
 
+      setSelected: function(index){
+        if(this._swiper)
+        this._swiper.slideTo(index);
+      },
+
       render: function () {
         console.log('render');
         // TODO: figure out a nicer way for this crap...
@@ -390,6 +420,11 @@ Polymer 1.0 element that wraps around Swiper.js
 
         this._swiper = new window.Swiper(this.$.swiper, this.getOptions());
         this.scopeSubtree(this.$.swiper);
+
+        this._swiper.on('slideChangeEnd', function (sw) {
+          console.log('slide changed to '+sw.realIndex);
+          this.selected = sw.realIndex;
+        }.bind(this));
       },
 
       view: function (e) {
