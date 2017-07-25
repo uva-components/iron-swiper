@@ -21,7 +21,7 @@
       <h3>Basic uva-swiper demo</h3>
       <demo-snippet>
         <template>
-          <uva-swiper loop a11y keyboard-control pagination pagination-clickable>
+          <uva-swiper navigation-buttons>
             <img src="./sample.jpg">
             <img src="./sample.jpg">
             <img src="./sample.jpg">
@@ -29,5 +29,45 @@
         </template>
       </demo-snippet>
     </div>
+
+    <div class="vertical-section-container centered">
+      <h3>Pagination uva-swiper demo</h3>
+      <demo-snippet>
+        <template>
+          <uva-swiper pagination pagination-clickable>
+            <img src="./sample.jpg">
+            <img src="./sample.jpg">
+            <img src="./sample.jpg">
+          </uva-swiper>
+        </template>
+      </demo-snippet>
+    </div>
+
+    <div class="vertical-section-container centered">
+      <h3>Vertical Pagination uva-swiper demo</h3>
+      <demo-snippet>
+        <template>
+          <uva-swiper pagination pagination-clickable direction='vertical' style="height: 300px;">
+            <img src="./sample.jpg">
+            <img src="./sample.jpg">
+            <img src="./sample.jpg">
+          </uva-swiper>
+        </template>
+      </demo-snippet>
+    </div>
+
+    <div class="vertical-section-container centered">
+      <h3>Space Between Slides uva-swiper demo</h3>
+      <demo-snippet>
+        <template>
+          <uva-swiper space-between="30">
+            <img src="./sample.jpg">
+            <img src="./sample.jpg">
+            <img src="./sample.jpg">
+          </uva-swiper>
+        </template>
+      </demo-snippet>
+    </div>
+
   </body>
 </html>

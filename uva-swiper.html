@@ -19,6 +19,10 @@ Polymer 1.0 element that wraps around Swiper.js
         display: block;
       }
 
+      [hidden] {
+        display: none;
+      }
+
       #slides {
         display: none;
       }
@@ -151,6 +155,24 @@ Polymer 1.0 element that wraps around Swiper.js
         },
 
         /**
+         * Direction can be one of 'horizontal' or 'vertical'
+         */
+        direction: {
+          type: String,
+          value: "horizontal",
+          observer: "_setOptions"
+        },
+
+        /**
+         * Distance between slides in px
+         */
+        spaceBetween: {
+          type: Number,
+          value: 0,
+          observer: "_setOptions"
+        },
+
+        /**
          * Enable pagination functionality
          */
         pagination: {
@@ -227,10 +249,17 @@ Polymer 1.0 element that wraps around Swiper.js
          */
         options: {
           type: Object,
-          value: {
-          }
+          value: function(){return {};}
         }
 
+      },
+
+      _setOptions: function(){
+        this.debounce('optionsbounce', function(){
+          console.log("setoptions");
+          this.set('options.direction', this.direction);
+          this.set('options.spaceBetween', this.spaceBetween);
+        },50);
       },
 
       created: function () {
@@ -263,6 +292,8 @@ Polymer 1.0 element that wraps around Swiper.js
           if (!this.nodes || this.nodes.length <= 1) {
             options.loop = false;
           }
+
+  //        options.direction = this.direction;
 
           return options;
         }.bind(this), {
