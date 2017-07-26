@@ -216,6 +216,12 @@ Polymer 1.0 element that wraps around Swiper.js
           observer: "_setOptions"
         },
 
+        zoom: {
+          type: Boolean,
+          value: false,
+          observer: "_setOptions"
+        },
+
         /**
          * Enable pagination functionality
          */
@@ -299,7 +305,8 @@ Polymer 1.0 element that wraps around Swiper.js
               slidesPerView:this.slidesPerView,
               centeredSlides:this.centeredSlides,
               slideToClickedSlide:this.slideToClickedSlide,
-              touchRatio:this.touchRatio
+              touchRatio:this.touchRatio,
+              zoom:this.zoom
             });
         },50);
       },
