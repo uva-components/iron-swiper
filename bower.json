@@ -19,7 +19,7 @@
   "license": "MIT",
   "dependencies": {
     "polymer": "Polymer/polymer#^1.4.0",
-    "swiper": "swiper#^3.4.1"
+    "swiper": "^3.4.2"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",

@@ -6,7 +6,7 @@
 
     <title>uva-swiper demo</title>
 
-    <script>Polymer = { dom: 'shadow' };</script>
+<!--    <script>Polymer = { dom: 'shadow' };</script> -->
     <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
 
     <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
@@ -105,7 +105,7 @@
       <h3>Centered Slides uva-swiper demo</h3>
       <demo-snippet>
         <template>
-          <uva-swiper centered-slides slides-per-view="4" space-between="30" pagination-clickable>
+          <uva-swiper centered-slides slides-per-view="4" space-between="30">
             <img src="./sample.jpg">
             <img src="./sample.jpg">
             <img src="./sample.jpg">
@@ -121,7 +121,7 @@
       <h3>Thumbs Gallery With Two-way Control</h3>
       <demo-snippet>
         <template is="dom-bind">
-          <uva-swiper selected="{{sel}}" class="top" centered-slides slides-per-view="4" space-between="30" pagination-clickable>
+          <uva-swiper selected="{{sel}}" class="top" space-between="30">
             <img src="./sample.jpg">
             <img src="./sample.jpg">
             <img src="./sample.jpg">
@@ -129,13 +129,13 @@
             <img src="./sample.jpg">
             <img src="./sample.jpg">
           </uva-swiper>
-          <uva-swiper selected="{{sel}}" class="bottom" centered-slides slides-per-view="4" space-between="30" pagination-clickable>
-            <img src="./sample.jpg">
-            <img src="./sample.jpg">
-            <img src="./sample.jpg">
-            <img src="./sample.jpg">
-            <img src="./sample.jpg">
-            <img src="./sample.jpg">
+          <uva-swiper selected="{{sel}}" class="bottom" touch-ratio="0.2" slide-to-clicked-slide centered-slides slides-per-view="auto">
+            <img src="./sample.jpg" style="width: 100px;" on-click="alert('foo')">
+            <img src="./sample.jpg" style="width: 100px;">
+            <img src="./sample.jpg" style="width: 100px;">
+            <img src="./sample.jpg" style="width: 100px;">
+            <img src="./sample.jpg" style="width: 100px;">
+            <img src="./sample.jpg" style="width: 100px;">
           </uva-swiper>
         </template>
       </demo-snippet>
