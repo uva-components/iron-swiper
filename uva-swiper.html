@@ -445,7 +445,7 @@ Polymer 1.0 element that wraps around Swiper.js
         this._swiper = new window.Swiper(this.$.swiper, this.getOptions());
         this.scopeSubtree(this.$.swiper);
 
-        this._swiper.on('slideChangeEnd', function (sw) {
+        this._swiper.on('slideChangeStart', function (sw) {
           console.log('slide changed to '+sw.realIndex);
           this.selected = sw.realIndex;
         }.bind(this));
