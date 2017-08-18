@@ -2,6 +2,7 @@
 
 <link rel="import" href="../polymer/polymer.html" />
 <link rel="import" href="icons.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
 
 <!--
 `uva-swiper`
@@ -14,9 +15,10 @@ Polymer 1.0 element that wraps around Swiper.js
   <link rel="import" type="css" href="../swiper/dist/css/swiper.min.css">
 
   <template>
-    <style>
+    <style is="custom-style">
       :host {
         display: block;
+        @apply(--layout-vertical);
       }
 
       [hidden] {
@@ -29,16 +31,23 @@ Polymer 1.0 element that wraps around Swiper.js
 
       .swiper-container {
         width: 100%;
+        @apply(--layout-flex);
+        @apply(--layout-vertical);
+        /*
         height: 100%;
+        */
         margin: 0 auto;
         @apply(--uva-swiper-container);
       }
       .swiper-wrapper {
-        height: calc(100% - 25px);
+        @apply(--layout-flex);
+
+        /*height: calc(100% - 25px);*/
         @apply(--uva-swiper-wrapper);
       }
       .swiper-slide {
-        background-color: #eeeeee;
+        height: auto;
+/*        background-color: #eeeeee; */
         background-position: center center;
         background-size: contain;
         background-repeat: no-repeat;
