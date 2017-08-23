@@ -19,7 +19,8 @@
   "license": "MIT",
   "dependencies": {
     "polymer": "Polymer/polymer#^1.4.0",
-    "swiper": "^3.4.2"
+    "swiper": "^3.4.2",
+    "uva-helper-libs": "uva-components/uva-helper-libs"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
