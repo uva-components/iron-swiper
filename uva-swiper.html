@@ -19,7 +19,7 @@ Polymer 1.0 element that wraps around Swiper.js
     <style is="custom-style">
       :host {
         display: block;
-        @apply(--layout-vertical);
+        @apply(--layout-vertical); 
       }
 
       [hidden] {
@@ -34,21 +34,17 @@ Polymer 1.0 element that wraps around Swiper.js
         width: 100%;
         @apply(--layout-flex);
         @apply(--layout-vertical);
-        /*
-        height: 100%;
-        */
+
         margin: 0 auto;
         @apply(--uva-swiper-container);
       }
       .swiper-wrapper {
         @apply(--layout-flex);
 
-        /*height: calc(100% - 25px);*/
         @apply(--uva-swiper-wrapper);
       }
       .swiper-slide {
         height: auto;
-/*        background-color: #eeeeee; */
         background-position: center center;
         background-size: contain;
         background-repeat: no-repeat;
@@ -352,7 +348,7 @@ Polymer 1.0 element that wraps around Swiper.js
             options.loop = false;
           }
 
-  //        options.direction = this.direction;
+          options.direction = this.direction;
 
           return options;
         }.bind(this), {
@@ -440,30 +436,32 @@ Polymer 1.0 element that wraps around Swiper.js
       },
 
       render: function () {
-        console.log('render');
-        // TODO: figure out a nicer way for this crap...
-        if (!this.$.wrapper.clientHeight) {
-          return setTimeout(this.render.bind(this), 50);
-        }
+        this.debounce("renderbounce", function(){
+          console.log('render');
+          // TODO: figure out a nicer way for this crap...
+          if (!this.$.wrapper.clientHeight) {
+            return setTimeout(this.render.bind(this), 50);
+          }
 
-        if (this._swiper) {
-          this.$.prev.classList.remove(this._swiper.params.buttonDisabledClass);
-          this.$.next.classList.remove(this._swiper.params.buttonDisabledClass);
-          this._swiper.destroy();
-        }
+          if (this._swiper) {
+            this.$.prev.classList.remove(this._swiper.params.buttonDisabledClass);
+            this.$.next.classList.remove(this._swiper.params.buttonDisabledClass);
+            this._swiper.destroy();
+          }
 
-        this._swiper = new window.Swiper(this.$.swiper, this.getOptions());
-        this.scopeSubtree(this.$.swiper);
+          this._swiper = new window.Swiper(this.$.swiper, this.getOptions());
+          this.scopeSubtree(this.$.swiper);
 
-        this._swiper.on('slideChangeStart', function (sw) {
-          console.log('slide changed to '+sw.realIndex);
-          this.selected = sw.realIndex;
-        }.bind(this));
-//        this._swiper.on('touchEnd', function (s,e) {
-//                    let range = 5
-//                    let diff = s.touches.diff = s.isHorizontal() ? s.touches.currentX - s.touches.startX : s.touches.currentY - s.touches.startY
-//                    if (diff < range || diff > -range) s.allowClick = true
-//        }.bind(this));
+          this._swiper.on('slideChangeStart', function (sw) {
+            console.log('slide changed to '+sw.realIndex);
+            this.selected = sw.realIndex;
+          }.bind(this));
+          this._swiper.on('touchEnd', function (s,e) {
+                      let range = 5
+                      let diff = s.touches.diff = s.isHorizontal() ? s.touches.currentX - s.touches.startX : s.touches.currentY - s.touches.startY
+                      if (diff < range || diff > -range) s.allowClick = true
+          }.bind(this));
+        },50);
       },
 
       view: function (e) {
