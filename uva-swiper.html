@@ -314,7 +314,7 @@ Polymer 1.0 element that wraps around Swiper.js
               spaceBetween:this.spaceBetween,
               slidesPerView:this.slidesPerView,
               centeredSlides:this.centeredSlides,
-              slideToClickedSlide:this.slideToClickedSlide,
+//              slideToClickedSlide:this.slideToClickedSlide,
               touchRatio:this.touchRatio,
               zoom:this.zoom
             });
@@ -322,7 +322,8 @@ Polymer 1.0 element that wraps around Swiper.js
       },
 
       created: function () {
-        this.view = this.view.bind(this);
+        this._view = this._view.bind(this);
+        this._nodeClicked = this._nodeClicked.bind(this);
       },
 
       nav: function (property, nodes) {
@@ -409,8 +410,9 @@ Polymer 1.0 element that wraps around Swiper.js
 
               var node = wrapper.appendChild(slides[i].cloneNode(true));
               node.classList.add('swiper-slide');
-              node.removeEventListener('click', this.view);
-              node.addEventListener('click', this.view);
+              node.setAttribute('index',i.toString());
+              node.removeEventListener('click', this._nodeClicked);
+              node.addEventListener('click', this._nodeClicked);
 
               var url = node.style.backgroundImage;
               if (url) {
@@ -459,17 +461,24 @@ Polymer 1.0 element that wraps around Swiper.js
           console.log('slide changed to '+sw.realIndex);
           this.selected = sw.realIndex;
         }.bind(this));
-//        this._swiper.on('touchEnd', function (s,e) {
-//                    let range = 5
-//                    let diff = s.touches.diff = s.isHorizontal() ? s.touches.currentX - s.touches.startX : s.touches.currentY - s.touches.startY
-//                    if (diff < range || diff > -range) s.allowClick = true
-//        }.bind(this));
+        this._swiper.on('touchEnd', function (s,e) {
+                    let range = 5
+                    let diff = s.touches.diff = s.isHorizontal() ? s.touches.currentX - s.touches.startX : s.touches.currentY - s.touches.startY
+                    if (diff < range || diff > -range) s.allowClick = true
+        }.bind(this));
       },
 
-      view: function (e) {
+      _nodeClicked: function (e) {
+        var index = e.target.getAttribute('index');
+        if (this.slideToClickedSlide) {
+          this.setSelected(index);
+        }
+        this._view(e);
+      },
+
+      _view: function (e) {
         e.cancelBubble = true;
         var url = e.currentTarget && e.currentTarget.getAttribute('data-url');
-
         this.fire('view', { url: url });
       }
     });

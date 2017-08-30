@@ -6,7 +6,7 @@
 
     <title>uva-swiper demo</title>
 
-<!--    <script>Polymer = { dom: 'shadow' };</script> -->
+    <script>Polymer = { dom: 'shadow' };</script>
     <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
 
     <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
@@ -15,6 +15,9 @@
     <link rel="import" href="../uva-swiper.html">
 
     <style is="custom-style" include="demo-pages-shared-styles">
+      uva-swiper {
+        height: 200px;
+      }
     </style>
   </head>
   <body>
@@ -131,7 +134,7 @@
             <img src="./sample.jpg">
           </uva-swiper>
           <uva-swiper selected="{{sel}}" class="bottom" touch-ratio="0.2" slide-to-clicked-slide centered-slides slides-per-view="auto">
-            <img src="./sample.jpg" style="width: 100px;" on-click="alert('foo')">
+            <img src="./sample.jpg" style="width: 100px;">
             <img src="./sample.jpg" style="width: 100px;">
             <img src="./sample.jpg" style="width: 100px;">
             <img src="./sample.jpg" style="width: 100px;">
