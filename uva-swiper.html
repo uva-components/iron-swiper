@@ -233,6 +233,16 @@ Polymer 1.0 element that wraps around Swiper.js
         },
 
         /**
+         * True when in the zoomed state
+         */
+        zoomed: {
+          type: Boolean,
+          value: false,
+          notify: true,
+          readOnly: true
+        },
+
+        /**
          * Enable pagination functionality
          */
         pagination: {
@@ -399,8 +409,8 @@ Polymer 1.0 element that wraps around Swiper.js
 
             var wrapper = this.$.wrapper;
 
-            wrapper.innerHTML = '';
-            wrapper.removeAttribute('style');
+            Polymer.dom(wrapper).innerHTML = '';
+            Polymer.dom(wrapper).removeAttribute('style');
 
             for (var i = 0; i < slides.length; i++) {
               // Otherwise IE controls don't work
@@ -408,7 +418,7 @@ Polymer 1.0 element that wraps around Swiper.js
                 slides[i].classList.add('swiper-no-swiping');
               }
 
-              var node = wrapper.appendChild(slides[i].cloneNode(true));
+              var node = Polymer.dom(wrapper).appendChild(slides[i].cloneNode(true));
               node.classList.add('swiper-slide');
               node.setAttribute('index',i.toString());
               node.removeEventListener('click', this._nodeClicked);
