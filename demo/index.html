@@ -148,13 +148,21 @@
     <div class="vertical-section-container centered">
       <h3>Zoom demo</h3>
       <demo-snippet>
-        <template>
-          <uva-swiper navigation-buttons zoom>
-            <img src="./sample.jpg">
-            <img src="./sample.jpg">
-            <img src="./sample.jpg">
+        <template id="zoomableApp" is="dom-bind">
+          <uva-swiper id="zoomable" navigation-buttons zoom zoomed="{{isZoomed}}">
+            <div><div class="swiper-zoom-container"><img src="./sample.jpg"></div></div>
+            <div><div class="swiper-zoom-container"><img src="./sample.jpg"></div></div>
+            <div><div class="swiper-zoom-container"><img src="./sample.jpg"></div></div>
           </uva-swiper>
+          <div>Is currently Zoomed? {{isZoomed}}</div>
+          <button on-tap="toggleZoom">Toggle Zoom</button>
         </template>
+        <script>
+          var zoomable = document.getElementById('zoomableApp');
+          zoomable.toggleZoom = function(){
+            document.getElementById('zoomable').toggleZoom();
+          };
+        </script>
       </demo-snippet>
     </div>
 

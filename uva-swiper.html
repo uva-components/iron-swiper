@@ -471,11 +471,23 @@ Polymer 1.0 element that wraps around Swiper.js
           console.log('slide changed to '+sw.realIndex);
           this.selected = sw.realIndex;
         }.bind(this));
+        this._swiper.on('doubleTap', function(s,e) {
+          if (this.zoom) {
+            this._setZoomed(!this.zoomed);
+          }
+        }.bind(this));
         this._swiper.on('touchEnd', function (s,e) {
                     let range = 5
                     let diff = s.touches.diff = s.isHorizontal() ? s.touches.currentX - s.touches.startX : s.touches.currentY - s.touches.startY
                     if (diff < range || diff > -range) s.allowClick = true
         }.bind(this));
+      },
+
+      toggleZoom: function(){
+        if (this.zoom) {
+          this._swiper.zoom.toggleZoom(this._swiper);
+          this._setZoomed(!this.zoomed);
+        }
       },
 
       _nodeClicked: function (e) {
