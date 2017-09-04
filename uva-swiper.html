@@ -498,7 +498,7 @@ Polymer 1.0 element that wraps around Swiper.js
 
       _nodeClicked: function (e) {
         var index = e.target.getAttribute('index');
-        if (this.slideToClickedSlide) {
+        if (this.slideToClickedSlide && index) {
           console.log('clicked item '+index);
           this.setSelected(index);
         }
