@@ -2,7 +2,7 @@
 
 <link rel="import" href="../polymer/polymer.html" />
 <link rel="import" href="../uva-helper-libs/polyfills.html">
-<link rel="import" href="icons.html">
+<link rel="import" href="../uva-theme/uva-icons.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
 
 <!--
@@ -42,13 +42,12 @@ Polymer 1.0 element that wraps around Swiper.js
       }
       .swiper-wrapper {
         @apply(--layout-flex);
-
-        /*height: calc(100% - 25px);*/
+/*      height: calc(100% - 25px); */
         @apply(--uva-swiper-wrapper);
       }
       .swiper-slide {
         height: auto;
-/*        background-color: #eeeeee; */
+/*        background-color: #eeeeee;  */
         background-position: center center;
         background-size: contain;
         background-repeat: no-repeat;
@@ -144,8 +143,8 @@ Polymer 1.0 element that wraps around Swiper.js
 
       <div class="swiper-wrapper" id="wrapper"></div>
 
-      <iron-icon icon="uva-swiper:arrow-back" class="swiper-button-prev" id="prev" hidden="[[!nav(navigationButtons, nodes)]]"></iron-icon>
-      <iron-icon icon="uva-swiper:arrow-forward" class="swiper-button-next" id="next" hidden="[[!nav(navigationButtons, nodes)]]"></iron-icon>
+      <iron-icon icon="uva-icon:arrow-left" class="swiper-button-prev" id="prev" hidden="[[!nav(navigationButtons, nodes)]]"></iron-icon>
+      <iron-icon icon="uva-icon:arrow-right" class="swiper-button-next" id="next" hidden="[[!nav(navigationButtons, nodes)]]"></iron-icon>
 
       <div class="swiper-scrollbar" id="scrollbar" hidden="[[!scrollbar]]"></div>
 
@@ -324,7 +323,7 @@ Polymer 1.0 element that wraps around Swiper.js
 
       _setOptions: function(){
         this.debounce('optionsbounce', function(){
-          console.log("setoptions");
+
           this.set('options', {
               direction:this.direction,
               spaceBetween:this.spaceBetween,
@@ -400,7 +399,7 @@ Polymer 1.0 element that wraps around Swiper.js
 
       attached: function () {
         this.debounce('attachbounce', function(){
-          console.log('attached');
+
           clearTimeout(this._initializer);
 
           this._initializer = setTimeout(function () {
@@ -458,7 +457,7 @@ Polymer 1.0 element that wraps around Swiper.js
       },
 
       render: function () {
-        console.log('render');
+
         // TODO: figure out a nicer way for this crap...
         if (!this.$.wrapper.clientHeight) {
           return setTimeout(this.render.bind(this), 50);
@@ -474,7 +473,7 @@ Polymer 1.0 element that wraps around Swiper.js
         this.scopeSubtree(this.$.swiper);
 
         this._swiper.on('slideChangeStart', function (sw) {
-          console.log('slide changed to '+sw.realIndex);
+
           this.selected = sw.realIndex;
         }.bind(this));
         this._swiper.on('doubleTap', function(s,e) {
@@ -499,7 +498,7 @@ Polymer 1.0 element that wraps around Swiper.js
       _nodeClicked: function (e) {
         var index = e.target.getAttribute('index');
         if (this.slideToClickedSlide && index) {
-          console.log('clicked item '+index);
+        
           this.setSelected(index);
         }
         this._view(e);
