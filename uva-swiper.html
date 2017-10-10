@@ -47,7 +47,6 @@ Polymer 1.0 element that wraps around Swiper.js
       }
       .swiper-slide {
         height: auto;
-/*        background-color: #eeeeee;  */
         background-position: center center;
         background-size: contain;
         background-repeat: no-repeat;
@@ -498,7 +497,7 @@ Polymer 1.0 element that wraps around Swiper.js
       _nodeClicked: function (e) {
         var index = e.target.getAttribute('index');
         if (this.slideToClickedSlide && index) {
-        
+
           this.setSelected(index);
         }
         this._view(e);
