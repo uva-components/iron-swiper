@@ -1,0 +1,61 @@
+{
+  "name": "uva-swiper",
+  "description": "Polymer 1.0 element that wraps around Swiper.js",
+  "main": "uva-swiper.html",
+  "keywords": [
+    "web-component",
+    "web-components",
+    "web",
+    "component",
+    "components",
+    "custom",
+    "element",
+    "polymer",
+    "iron",
+    "swiper",
+    "swipe",
+    "mobile"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.4.0",
+    "swiper": "^3.4.2",
+    "uva-helper-libs": "uva-components/uva-helper-libs#master",
+    "uva-theme": "uva-components/uva-theme#master"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.0.0",
+    "web-component-tester": "^4.0.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0",
+    "paper-elements": "^1.0.7"
+  },
+  "resolutions": {
+    "web-component-tester": "^5.0.1",
+    "lodash": "^4.17.4",
+    "mocha": "^3.1.2",
+    "promise-polyfill": "^1.0.0",
+    "app-storage": "1 - 2",
+    "iron-component-page": "^1.0.0",
+    "polymer": "^1.10.1",
+    "webcomponentsjs": "^0.7.24",
+    "iron-demo-helpers": "^1.0.0",
+    "iron-doc-viewer": "^1.0.1",
+    "iron-flex-layout": "1 - 2",
+    "iron-location": "1 - 2",
+    "iron-icon": "^1.0.0",
+    "iron-iconset-svg": "^1.0.0",
+    "app-layout": "1 - 2"
+  },
+  "homepage": "https://github.com/uva-components/uva-swiper",
+  "_release": "eb3631e7c3",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "eb3631e7c3348f98f472e8c9e3bcac9a07430631"
+  },
+  "_source": "https://github.com/uva-components/uva-swiper.git",
+  "_target": "master",
+  "_originalSource": "uva-components/uva-swiper",
+  "_direct": true
+}
